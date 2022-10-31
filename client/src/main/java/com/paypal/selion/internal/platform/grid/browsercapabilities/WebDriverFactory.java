@@ -53,33 +53,38 @@ public final class WebDriverFactory {
         DesiredCapabilities capability = null;
 
         RemoteWebDriver driver = null;
-        switch (browser) {
-        case FIREFOX:
-            capability = new FireFoxCapabilitiesBuilder().createCapabilities();
-            break;
-        case CHROME:
-            capability = new ChromeCapabilitiesBuilder().createCapabilities();
-            break;
-        case INTERNET_EXPLORER:
-            capability = new IECapabilitiesBuilder().createCapabilities();
-            break;
-        case MICROSOFT_EDGE:
-            capability = new EdgeCapabilitiesBuilder().createCapabilities();
-            break;
-        case HTMLUNIT:
-            capability = new HtmlUnitCapabilitiesBuilder().createCapabilities();
-            break;
-        case OPERA:
-            capability = new OperaCapabilitiesBuilder().createCapabilities();
-            break;
-        case PHANTOMJS:
-            capability = new PhantomJSCapabilitiesBuilder().createCapabilities();
-            break;
-        case SAFARI:
-            capability = new SafariCapabilitiesBuilder().createCapabilities();
-            break;
-        default:
-            break;
+        if (Config.getConfigProperty(ConfigProperty.CLOUD_PLATFORM).equals("")){
+            switch (browser) {
+            case FIREFOX:
+                capability = new FireFoxCapabilitiesBuilder().createCapabilities();
+                break;
+            case CHROME:
+                capability = new ChromeCapabilitiesBuilder().createCapabilities();
+                break;
+            case INTERNET_EXPLORER:
+                capability = new IECapabilitiesBuilder().createCapabilities();
+                break;
+            case MICROSOFT_EDGE:
+                capability = new EdgeCapabilitiesBuilder().createCapabilities();
+                break;
+            case HTMLUNIT:
+                capability = new HtmlUnitCapabilitiesBuilder().createCapabilities();
+                break;
+            case OPERA:
+                capability = new OperaCapabilitiesBuilder().createCapabilities();
+                break;
+            case PHANTOMJS:
+                capability = new PhantomJSCapabilitiesBuilder().createCapabilities();
+                break;
+            case SAFARI:
+                capability = new SafariCapabilitiesBuilder().createCapabilities();
+                break;
+            default:
+                break;
+            }
+        }
+        else if (Config.getConfigProperty(ConfigProperty.CLOUD_PLATFORM).equals("browserstack")){
+            capability = new DesiredCapabilities();
         }
         capability = new UserCapabilitiesBuilder().getCapabilities(capability);
         logger.log(Level.FINE, "Spawning a browser with the following capabilities: "
@@ -99,6 +104,7 @@ public final class WebDriverFactory {
             driver = new RemoteWebDriver(new EventFiringCommandExecutor(new HttpCommandExecutor(url), listeners),
                     capability);
         } else {
+
             driver = new RemoteWebDriver(url, capability);
         }
         DriverFactoryHelper.setWindowSize(driver);

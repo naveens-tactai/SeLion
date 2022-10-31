@@ -41,8 +41,8 @@ public class UserCapabilitiesBuilder extends DefaultCapabilitiesBuilder {
         // Applies user provided capabilities which are specified either via the @WebTest or @MobileTest annotation or
         // via the attributes of ITestResult object (deprecated) for the current test.This info will be available in the
         // AbstractTestSession object for the current test.
-        capabilities.merge(Grid.getTestSession().getAdditionalCapabilities());
 
+        capabilities.merge(Grid.getTestSession().getAdditionalCapabilities());
         return capabilities;
     }
 

@@ -49,7 +49,7 @@ public final class SeLionBuildInfo {
 
     /**
      * Returns values for build time info
-     * 
+     *
      * @param property
      *           The {@link SeLionBuildProperty} of interest
      * @return The build time value.</br></br> The fall back value which can be obtained via
@@ -139,6 +139,11 @@ public final class SeLionBuildInfo {
         BUILD_DEPENDENCY_SELENIUM_VERSION("selion.build.dependency.selenium.version"),
 
         /**
+         * The Selenium dependency version at the time of compilation
+         */
+        BUILD_DEPENDENCY_SELENIUM_SERVER_VERSION("selion.build.dependency.selenium_server.version"),
+
+        /**
          * The ios-driver dependency version at the time of compilation
          */
         BUILD_DEPENDENCY_IOSDRIVER("selion.build.dependency.iosdriver.version"),
@@ -163,7 +168,7 @@ public final class SeLionBuildInfo {
 
         /**
          * Returns the build property value
-         * 
+         *
          * @return the property value
          */
         public String getPropertyValue() {
@@ -172,7 +177,7 @@ public final class SeLionBuildInfo {
 
         /**
          * Returns the fall back value for this build property
-         * 
+         *
          * @return The fall back value
          */
         public String getFallBackValue() {

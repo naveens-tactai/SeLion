@@ -166,7 +166,11 @@ final class DriverFactoryHelper {
                         + "via the TestNG suite file parameter : <parameter name=\"seleniumhost\" value=\"\" />";
                 throw new IllegalStateException(errMsg);
             }
-            url = new URL(protocol + "://" + hostToRun + ":" + port + "/wd/hub");
+            //url = new URL(protocol + "://" + hostToRun + ":" + port + "/wd/hub");
+            url = new URL(protocol + "://" + hostToRun + "/wd/hub");
+
+            System.out.println("**************************");
+            System.out.println(url);
         } catch (MalformedURLException e) {
             logger.log(Level.SEVERE, e.getMessage(), e);
         }

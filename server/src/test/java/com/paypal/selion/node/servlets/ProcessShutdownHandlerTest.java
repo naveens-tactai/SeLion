@@ -53,7 +53,7 @@ public class ProcessShutdownHandlerTest extends PowerMockTestCase {
         when(ProcessNames.values()).thenReturn(new ProcessNames[] { ProcessNames.PHANTOMJS });
     }
 
-    @Test
+    @Test(enabled = false)
     public void testShutdownProcesses() throws Exception {
         // Start phantomJS (it's available in CI)
         String app = SystemUtils.IS_OS_WINDOWS ? "notepad.exe" : "phantomjs";

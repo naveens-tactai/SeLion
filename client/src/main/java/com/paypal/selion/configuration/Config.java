@@ -388,7 +388,7 @@ public final class Config {
          * Automatically take screen shots.<br>
          */
         AUTO_SCREEN_SHOT("autoScreenShot", "true", true),
-        
+
         /**
          * Protocol might be http or https. Used when
          * {@link ConfigProperty#SELENIUM_RUN_LOCALLY} is <b>false</b>.<br>
@@ -623,8 +623,11 @@ public final class Config {
          * Browser specified by user.<br>
          * Default is set to <b>firefox</b>
          */
-        BROWSER("browser", "*firefox", false),
-
+        //BROWSER("browser", "*firefox", false),
+        /**
+        Updated
+         */
+        BROWSER("browser", "*chrome", false),
         /**
          * Run the browser in headless mode, if supported
          * Default is set to <b>false</b>>
@@ -767,7 +770,12 @@ public final class Config {
          * To print debug info (about Browser/Selenium Version/Client OS) for user.<br>
          * Default is set to <b>true</b>
          */
-        PRINT_DEBUG_INFO("printDebugInfo", "true", true);
+        PRINT_DEBUG_INFO("printDebugInfo", "true", true),
+
+        /**
+         * Parameter refers on which cloud platform
+         */
+        CLOUD_PLATFORM("cloudplatform","",true);
 
         private String name;
         private String defaultValue;

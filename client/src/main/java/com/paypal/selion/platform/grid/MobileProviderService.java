@@ -84,7 +84,7 @@ public class MobileProviderService {
             logger.log(Level.FINE, "Found mobile driver provider that supports " + nodeType);
             return mobileProviders.get(nodeType).capabilityBuilder();
         }
-        logger.severe("Did not find a mobile capabilities builder that supports " + nodeType);
+        logger.severe("D    id not find a mobile capabilities builder that supports " + nodeType);
         return null;
     }
 

@@ -2,7 +2,26 @@
 <suite thread-count="5" verbose="1" name="Chrome Unit Test Suite" skipfailedinvocationcounts="false" junit="false"
     parallel="methods" data-provider-thread-count="10" annotations="JDK">
 
-    <parameter name="browser" value="*chrome" />
+    <!--<parameter name="browser" value="*chrome" />-->
+
+    <!--<parameter name="chromeDriverPath" value="/Users/naveensagayaselvaraj/IdeaProjects/SeLion/client/src/test/resources/suites/chromedriver"/>
+    <parameter name="newCommandTimeout" value="360"/>
+    <parameter name="runLocally" value="false"/>-->
+
+
+    <!--<parameter name="seleniumhost" value="automationtact_HAgj7J:zLVp9wftzx6Yf2qQfsd6@hub-cloud.browserstack.com" />
+    <parameter name="seleniumport" value="80" />
+    <parameter name="protocol" value="https" />
+    <parameter name="cloudplatform" value="browserstack" />-->
+
+    <parameter name="useSauceLabGrid" value="true" />
+    <parameter name="seleniumhost" value="ondemand.saucelabs.com" />
+    <parameter name="seleniumport" value="443" />
+    <!-- provide the sauce username , sauceApiKey and tunnel user id -->
+    <parameter name="sauceUserName" value="oauth-automation.tact.s-2158f" />
+    <parameter name="sauceApiKey" value="c7fa5438-d495-43c0-a4dc-5d70d1b7fadc" />
+
+
 
     <test verbose="2" name="Chrome-Test" annotations="JDK">
         <groups>
@@ -13,7 +32,7 @@
         </groups>
         <classes>
             <class name="com.paypal.selion.platform.html.ContainerTest" />
-            <class name="com.paypal.selion.platform.html.CheckBoxTest" />
+            <!--<class name="com.paypal.selion.platform.html.CheckBoxTest" />
             <class name="com.paypal.selion.platform.html.ButtonTest" />
             <class name="com.paypal.selion.platform.html.DatePickerTest" />
             <class name="com.paypal.selion.platform.html.FormTest" />
@@ -25,7 +44,7 @@
             <class name="com.paypal.selion.platform.html.TableTest" />
             <class name="com.paypal.selion.platform.html.TextAreaTest" />
             <class name="com.paypal.selion.platform.html.TextFieldTest" />
-            <class name="com.paypal.selion.platform.html.support.ByOrOperatorTest" />
+            <class name="com.paypal.selion.platform.html.support.ByOrOperatorTest" />-->
         </classes>
     </test>
 

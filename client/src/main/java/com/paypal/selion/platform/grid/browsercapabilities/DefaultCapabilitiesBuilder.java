@@ -50,30 +50,32 @@ public abstract class DefaultCapabilitiesBuilder {
 
         capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
-        // TODO geckodriver does not honor this capability as of v0.18.0 -- See https://github.com/mozilla/geckodriver/issues/617
-        if (!Config.getBoolConfigProperty(ConfigProperty.SELENIUM_USE_GECKODRIVER) &&
-            Grid.getWebTestSession() != null &&
-            !Grid.getWebTestSession().getBrowser().contains("firefox")) {
-            // refer to https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities#read-write-capabilities
-            // for understanding the relevance of this capability.
-            capability.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
-        }
+        if (Config.getConfigProperty(ConfigProperty.CLOUD_PLATFORM).equals("")) {
+            // TODO geckodriver does not honor this capability as of v0.18.0 -- See https://github.com/mozilla/geckodriver/issues/617
+            if (!Config.getBoolConfigProperty(ConfigProperty.SELENIUM_USE_GECKODRIVER) &&
+                Grid.getWebTestSession() != null &&
+                !Grid.getWebTestSession().getBrowser().contains("firefox")) {
+                // refer to https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities#read-write-capabilities
+                // for understanding the relevance of this capability.
+                capability.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
+            }
 
-        capability.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, true);
-        // if user has explicitly asked for javascript to be turned off, then switch it off
-        if (!Boolean.parseBoolean(getLocalConfigProperty(ConfigProperty.BROWSER_CAPABILITY_SUPPORT_JAVASCRIPT))) {
-            capability.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, false);
-        }
+            capability.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, true);
+            // if user has explicitly asked for javascript to be turned off, then switch it off
+            if (!Boolean.parseBoolean(getLocalConfigProperty(ConfigProperty.BROWSER_CAPABILITY_SUPPORT_JAVASCRIPT))) {
+                capability.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, false);
+            }
 
-        String browserVersion = getLocalConfigProperty(ConfigProperty.BROWSER_CAPABILITY_VERSION);
+            String browserVersion = getLocalConfigProperty(ConfigProperty.BROWSER_CAPABILITY_VERSION);
 
-        if (getLocalConfigProperty(ConfigProperty.BROWSER_CAPABILITY_VERSION) != null) {
-            capability.setVersion(browserVersion);
-        }
+            if (getLocalConfigProperty(ConfigProperty.BROWSER_CAPABILITY_VERSION) != null) {
+                capability.setVersion(browserVersion);
+            }
 
-        String platform = getLocalConfigProperty(ConfigProperty.BROWSER_CAPABILITY_PLATFORM);
-        if (!platform.equalsIgnoreCase("ANY")) {
-            capability.setCapability(CapabilityType.PLATFORM, platform);
+            String platform = getLocalConfigProperty(ConfigProperty.BROWSER_CAPABILITY_PLATFORM);
+            if (!platform.equalsIgnoreCase("ANY")) {
+                capability.setCapability(CapabilityType.PLATFORM, platform);
+            }
         }
 
         logger.exiting(capability);

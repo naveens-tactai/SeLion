@@ -47,11 +47,11 @@ public class ReporterDateFormatterTest {
     public void testGetStringFromISODateString() throws ParseException {
 
         String expectedString = "Jan 20, 2015 6:21 PM";
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy h:mm a");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM, yyyy h:mm a");
         sdf.setTimeZone(TimeZone.getTimeZone("PST"));
         Date date = sdf.parse(expectedString);
         // convert expected string from PST to local TZ.
-        expectedString = DateFormatUtils.format(date, "MMM dd, yyyy h:mm a", TimeZone.getDefault());
+        expectedString = DateFormatUtils.format(date, "dd MMM, yyyy h:mm a", TimeZone.getDefault());
 
         String dateString = "2015-01-21T02:21:33.955Z";
         String resultDateString = ReporterDateFormatter.getStringFromISODateString(dateString);

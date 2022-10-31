@@ -143,6 +143,7 @@ public class WebTestSession extends AbstractTestSession {
 
     private void createSession() {
         logger.entering();
+        //Next line is not required for browserstack execution
         BrowserFlavors flavor = BrowserFlavors.getBrowser(getBrowser());
         RemoteWebDriver driver = WebDriverFactory.createInstance(flavor);
 

@@ -37,17 +37,17 @@ public class ContainerTest {
     private static final String id = "id";
     private static final String uniqueName = "uniqueName";
     private static final String uniqueId = "uniqueId";
-    
+
 
     @Test(groups = { "browser-tests" })
-    @WebTest
+    @WebTest(additionalCapabilities = { "os:Windows", "os_version:10", "browser:Chrome", "browser_version:latest" })
     public void testContainerWithXpathBase() {
         Grid.driver().get(TestServerUtils.getContainerURL());
         String baseLocator = "//*[contains(@class,'base')]";
         testContainerWithLocatorTypes(baseLocator);
     }
 
-    @Test(groups = { "browser-tests" })
+    @Test(groups = { "browser-tests" },enabled = false)
     @WebTest
     public void testContainerWithCssBase() {
         Grid.driver().get(TestServerUtils.getContainerURL());
@@ -55,7 +55,7 @@ public class ContainerTest {
         testContainerWithLocatorTypes(baseLocator);
     }
 
-    @Test(groups = { "browser-tests" })
+    @Test(groups = { "browser-tests" },enabled = false)
     @WebTest
     public void testContainerWithIdBase() {
         Grid.driver().get(TestServerUtils.getContainerURL());
@@ -63,7 +63,7 @@ public class ContainerTest {
         testContainerWithLocatorTypes(baseLocator);
     }
 
-    @Test(groups = { "browser-tests" })
+    @Test(groups = { "browser-tests" },enabled = false)
     @WebTest
     public void testContainerWithNameBase() {
         Grid.driver().get(TestServerUtils.getContainerURL());
@@ -71,7 +71,7 @@ public class ContainerTest {
         testContainerWithLocatorTypes(baseLocator);
     }
 
-    @Test(groups = { "browser-tests" })
+    @Test(groups = { "browser-tests" },enabled = false)
     @WebTest
     public void testContainerWithLinkBase() {
         Grid.driver().get(TestServerUtils.getContainerURL());
@@ -115,7 +115,7 @@ public class ContainerTest {
         }
     }
 
-    @Test(groups = { "browser-tests" })
+    @Test(groups = { "browser-tests" },enabled = false)
     @WebTest
     public void testContainer() {
         Grid.driver().get(TestServerUtils.getContainerURL());
@@ -124,7 +124,7 @@ public class ContainerTest {
         verifyEquals(actualName, uniqueName + "2");
     }
 
-    @Test(groups = { "browser-tests" })
+    @Test(groups = { "browser-tests" },enabled = false)
     @WebTest
     public void testContainerWithSize0() {
         Grid.driver().get(TestServerUtils.getContainerURL());
@@ -132,7 +132,7 @@ public class ContainerTest {
         verifyTrue(container.size() == 0);
     }
 
-    @Test(groups = { "browser-tests" })
+    @Test(groups = { "browser-tests" },enabled = false)
     @WebTest
     public void testContainerNoSuchElementExceptionAtIndex() {
         String failureMsg = "Allowing users to attempt getting elements at an unavailable index.";
@@ -171,7 +171,7 @@ public class ContainerTest {
         }
     }
 
-    @Test(groups = { "browser-tests" })
+    @Test(groups = { "browser-tests" },enabled = false)
     @WebTest
     public void testContainerBadChildXpathLocator() {
         String failureMsg = "Allowing users to get child element with bad locator: ";
@@ -191,7 +191,7 @@ public class ContainerTest {
         }
     }
 
-    @Test(groups = { "browser-tests" })
+    @Test(groups = { "browser-tests" },enabled = false)
     @WebTest
     public void testLocateElementsInContainer() {
         Grid.open(TestServerUtils.getContainerURL());
@@ -206,7 +206,7 @@ public class ContainerTest {
         assertEquals(e.size(), 1);
     }
 
-    @Test(groups = { "browser-tests" })
+    @Test(groups = { "browser-tests" },enabled = false)
     @WebTest
     public void testContainerGetSize() {
         Grid.driver().get(TestServerUtils.getContainerURL());
@@ -214,7 +214,7 @@ public class ContainerTest {
         assertTrue(container.size() > 0);
     }
 
-    @Test(groups = { "browser-tests" })
+    @Test(groups = { "browser-tests" },enabled = false)
     @WebTest
     public void testLocateChildElement() {
         Grid.driver().get(TestServerUtils.getContainerURL());
@@ -226,7 +226,7 @@ public class ContainerTest {
         assertTrue(childElements.size() > 0);
     }
 
-    @Test(groups = { "browser-tests" })
+    @Test(groups = { "browser-tests" },enabled = false)
     @WebTest
     public void testLocateElement() {
         Grid.driver().get(TestServerUtils.getContainerURL());
@@ -242,7 +242,7 @@ public class ContainerTest {
         assertTrue(childElements.size() > 0);
     }
 
-    @Test(groups = { "browser-tests" })
+    @Test(groups = { "browser-tests" },enabled = false)
     @WebTest
     public void testIsElementPresent() {
         Grid.driver().get(TestServerUtils.getContainerURL());

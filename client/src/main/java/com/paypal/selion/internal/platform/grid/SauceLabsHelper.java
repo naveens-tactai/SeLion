@@ -33,7 +33,7 @@ import com.paypal.test.utilities.logging.SimpleLogger;
 
 /**
  * A Helper class that is internally used by SeLion to embed the current test's Sauce Labs Job URL to the Test Report.
- * 
+ *
  */
 public class SauceLabsHelper {
     private static final String ALGORITHM = "HmacMD5";
@@ -68,7 +68,7 @@ public class SauceLabsHelper {
             logger.exiting();
             return;
         }
-        Reporter.log(String.format("<b>Sauce Labs job URL available <a href='%s' target='_blank'>here</a></b>", url));
+        Reporter.log(String.format("<b>Sauce Labs job URL available <a href='%s ' target='_blank'>here</a></b>", url));
         logger.exiting();
     }
 
